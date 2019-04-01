@@ -1,0 +1,91 @@
+body {
+  height: 100%;
+  font: 16px/1.8 "Noto Sans", "Noto Sans CJK", "Lato", "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", arial, sans-serif;
+  color: #333;
+  text-shadow: 4px 4px 4px #aaa;
+  position: relative;
+  margin: 20px auto 20px auto;
+  width: auto;
+  text-align: center;
+  position: relative;
+}
+
+.wrap {
+  min-height: 100%;
+}
+
+.footer {
+  margin-top: -50px;
+  height: 50px;
+  background-color: #eee;
+  z-index: 9999;
+}
+
+.sidebar {
+  height: 100%;
+  float: right;
+  width: 25%;
+  box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.2);
+  padding: 10px 10px 10px 10px;
+  margin-right: 20px;
+}
+
+.preview {
+  height: 480px;
+  width: 320px;
+  margin: 5px auto 5px auto;
+}
+
+.shadow_layer {
+  position: absolute;
+  z-index: 1;
+  height: 480px;
+  width: 320px;
+}
+
+.image_preview {
+  position: absolute;
+  z-index: -1;
+  overflow: hidden;
+  height: 480px;
+  width: 320px;
+}
+
+.image-preview img {
+  max-width: 100%;
+}
+
+.main_crop {
+  float: left;
+  height: auto;
+  width: 70%;
+  margin-left: 10px;
+}
+
+::selection {
+  background: #222;
+  color: white;
+}
+
+hr {
+  margin: 10px 0;
+  height: 3px;
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  position: relative;
+  display: block;
+  box-sizing: content-box;
+  background-color: #ddd;
+  background-image: repeating-linear-gradient(-45deg, #fff, #fff 4px, transparent 4px, transparent 8px);
+}
+
+#image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.control_panel {
+  bottom: 0;
+}

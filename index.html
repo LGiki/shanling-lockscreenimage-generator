@@ -1,107 +1,55 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Shanling Lock Screen Image Generator</title>
     <script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
-    <link crossorigin="anonymous" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        href="https://lib.baomitu.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://lib.baomitu.com/cropper/4.0.0-beta/cropper.css" rel="stylesheet">
-    <script src="https://lib.baomitu.com/cropper/4.0.0-beta/cropper.js"></script>
-    <style>
-        .header {
-            text-align: center;
-        }
-
-        #main {
-            max-height: 500px;
-        }
-
-        #input_image {
-            max-width: 100%;
-        }
-
-        .image-preview {
-            overflow: hidden;
-            height: 480px;
-            width: 320px;
-        }
-
-        .image-preview img {
-            max-width: 100%;
-        }
-    </style>
+    <script src="https://lib.baomitu.com/cropper/3.1.6/cropper.js"></script>
+    <script src="js/main.js"></script>
+    <link href="https://lib.baomitu.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://lib.baomitu.com/cropper/3.1.6/cropper.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width: 960px)" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" media="screen and (min-width: 960px)" />
+    <link href="https://lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
     <div class="header">
-        <h1>Shanling Lock Screen Image Generator</h1>
+        <h2>Shanling Lock Screen Image Generator</h2>
     </div>
-    <div id="main" class="col-md-9">
-        <img id="input_image" src="test-image.png">
-        <div class="image-preview"></div>
-        <button onclick="cropper.zoom(0.1)">+</button>
-        <button onclick="cropper.zoom(-0.1)">-</button>
-        <button onclick="cropper.rotate(90)">+90</button>
-        <button onclick="cropper.rotate(-90)">-90</button>
-        <button id="crop" onclick="cropper.getCroppedCanvas({ maxWidth: 4096, maxHeight: 4096 })">Crop</button>
-        <button id="crop" onclick="crop()">Crop</button>
-
+    <hr>
+    <div class="main_crop">
+        <img id="image" src="images/default.jpg">
     </div>
-    <div id="footer">
-        some text here...
-    </div>
-    <div class="modal fade docs-cropped" id="getCroppedCanvasModal" role="dialog" aria-hidden="true"
-        aria-labelledby="getCroppedCanvasTitle" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="getCroppedCanvasTitle">Cropped</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <a class="btn btn-primary" id="download" href="javascript:void(0);"
-                        download="cropped.jpg">Download</a>
-                </div>
+    <div class="sidebar">
+        <p>Preview:</p>
+        <div class="preview">
+            <div class="shadow_layer">
+                <img src="images/shadow.png">
             </div>
+            <div class="image_preview"></div>
         </div>
-    </div><!-- /.modal -->
+        <hr>
+        <div class="control_panel">
+            <input type="file" id="input_image" name="file" accept="image/*" style="display: none">
+            <button class="btn btn-primary" onclick="openFileSelector()"><i class="fa fa-upload"
+                    aria-hidden="true"></i></button>
+            <button class="btn btn-info" onclick="cropper.zoom(0.1)" title="Zoom Out"><i class="fa fa-search-plus"
+                    aria-hidden="true"></i></button>
+            <button class="btn btn-info" onclick="cropper.zoom(-0.1)"><i class="fa fa-search-minus"
+                    aria-hidden="true"></i></button>
+            <button class="btn btn-warning" onclick="cropper.rotate(45)"><i class="fa fa-repeat"
+                    aria-hidden="true">&nbsp;顺45°</i></button>
+            <button class="btn btn-warning" onclick="cropper.rotate(-45)"><i class="fa fa-undo"
+                    aria-hidden="true">&nbsp;逆45°</i></button>
+            <button class="btn btn-success" id="crop"><i class="fa fa-check" aria-hidden="true"></i></button>
+            <a style="display: none" href="" id="download" download="shanling.png"></a>
+        </div>
+    </div>
+
 </body>
-<script type="text/javascript">
-    var input_image = $('#input_image');
-    input_image.cropper({
-        aspectRatio: 2 / 3,
-        preview: '.image-preview',
-    });
-    var cropper = input_image.data('cropper');
-
-    function convertCanvasToImage(canvas) {
-        var image = new Image();
-        image.src = canvas.toDataURL("image/png");
-        return image;
-    }
-
-
-    function crop() {
-        var image = cropper.getCroppedCanvas({
-            width: 320,
-            height: 480,
-            // minWidth: 256,
-            // minHeight: 256,
-            // maxWidth: 4096,
-            // maxHeight: 4096,
-            fillColor: '#fff',
-            imageSmoothingEnabled: true,
-            imageSmoothingQuality: 'high',
-        });
-        console.log(image);
-    }
-</script>
 
 </html>
