@@ -1,8 +1,7 @@
-
 var cropper;
+
 function openFileSelector() {
     return $('#input_image').click();
-
 }
 
 $(function () {
@@ -11,6 +10,7 @@ $(function () {
     var options = {
         aspectRatio: 2 / 3,
         preview: '.image_preview',
+        viewMode: 1,
     };
     var $image = $('#image');
     $image.cropper(options);
