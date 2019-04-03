@@ -1,7 +1,19 @@
 var cropper;
 
+function convertCanvasToImage(canvas) {
+    var image = new Image();
+    image.src = canvas.toDataURL("image/png");
+    return image;
+}
+
 function openFileSelector() {
     return $('#input_image').click();
+}
+
+function resetCopper() {
+    if (confirm('确定要重置裁剪框吗？')) {
+        cropper.reset();
+    }
 }
 
 $(function () {
@@ -36,7 +48,7 @@ $(function () {
         }
     });
     $('#crop').click(function () {
-        let resultImage = cropper.getCroppedCanvas({
+        let resultCanvas = cropper.getCroppedCanvas({
             width: 320,
             height: 480,
             fillColor: '#fff',
@@ -44,11 +56,15 @@ $(function () {
             imageSmoothingQuality: 'high',
         });
 
-        resultImage.toBlob((blob) => {
-            var url = URL.createObjectURL(blob);
-            $('#download').attr('href', url);
-            document.getElementById("download").click();
-        });
+        if (device.mobile()) {
+            $('#getCroppedCanvasModal').modal().find('.modal-body').html(convertCanvasToImage(resultCanvas));
+        }else{
+            resultCanvas.toBlob((blob) => {
+                var url = URL.createObjectURL(blob);
+                $('#download').attr('href', url);
+                document.getElementById("download").click();
+            });
+        }
     });
 });
 

@@ -8,8 +8,10 @@
     <title>Shanling Lock Screen Image Generator</title>
     <script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://lib.baomitu.com/cropper/3.1.6/cropper.js"></script>
+    <script src="https://lib.baomitu.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://lib.baomitu.com/device.js/0.2.7/device.min.js"></script>
     <script src="js/main.js"></script>
-    <link href="https://lib.baomitu.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://lib.baomitu.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://lib.baomitu.com/cropper/3.1.6/cropper.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width: 960px)" />
     <link rel="stylesheet" type="text/css" href="css/main.css" media="screen and (min-width: 960px)" />
@@ -17,41 +19,60 @@
 </head>
 
 <body>
-    <div class="header">
-        <h2>Shanling Lock Screen Image Generator</h2>
-    </div>
-    <hr>
-    <div class="main_crop">
-        <img id="image" src="images/default.jpg">
-    </div>
-    <div class="sidebar">
-        <p>Preview:</p>
-        <div class="preview">
-            <div class="shadow_layer">
-                <img src="images/shadow.png">
-            </div>
-            <div class="image_preview"></div>
+    <div class="main">
+        <div class="header">
+            <h2>Shanling Lock Screen Image Generator</h2>
         </div>
         <hr>
-        <div class="control_panel">
-            <input type="file" id="input_image" name="file" accept="image/*" style="display: none">
-            <button class="btn btn-primary" onclick="openFileSelector()"><i class="fa fa-upload"
-                    aria-hidden="true"></i></button>
-            <button class="btn btn-info" onclick="cropper.zoom(0.1)" title="Zoom Out"><i class="fa fa-search-plus"
-                    aria-hidden="true"></i></button>
-            <button class="btn btn-info" onclick="cropper.zoom(-0.1)"><i class="fa fa-search-minus"
-                    aria-hidden="true"></i></button>
-            <button class="btn btn-warning" onclick="cropper.rotate(45)"><i class="fa fa-repeat"
-                    aria-hidden="true"></i></button>
-            <button class="btn btn-warning" onclick="cropper.rotate(-45)"><i class="fa fa-undo"
-                    aria-hidden="true"></i></button>
-            <button class="btn btn-danger" onclick="cropper.reset()"><i class="fa fa-refresh"
-                    aria-hidden="true"></i></button>
-            <button class="btn btn-success" id="crop"><i class="fa fa-check" aria-hidden="true"></i></button>
-            <a style="display: none" href="" id="download" download="shanling.png"></a>
+        <div class="main_crop">
+            <img id="image" src="images/default.jpg">
+        </div>
+        <div class="sidebar">
+            <p>Preview:</p>
+            <div class="preview">
+                <div class="shadow_layer">
+                    <img src="images/shadow.png">
+                </div>
+                <div class="image_preview"></div>
+            </div>
+            <hr>
+            <div class="control_panel">
+                <input type="file" id="input_image" name="file" accept="image/*" style="display: none">
+                <button class="btn btn-primary" onclick="openFileSelector()"><i class="fa fa-upload"
+                        aria-hidden="true"></i></button>
+                <button class="btn btn-info" onclick="cropper.zoom(0.1)" title="Zoom Out"><i class="fa fa-search-plus"
+                        aria-hidden="true"></i></button>
+                <button class="btn btn-info" onclick="cropper.zoom(-0.1)"><i class="fa fa-search-minus"
+                        aria-hidden="true"></i></button>
+                <button class="btn btn-warning" onclick="cropper.rotate(45)"><i class="fa fa-repeat"
+                        aria-hidden="true"></i></button>
+                <button class="btn btn-warning" onclick="cropper.rotate(-45)"><i class="fa fa-undo"
+                        aria-hidden="true"></i></button>
+                <button class="btn btn-danger" onclick="resetCopper()"><i class="fa fa-refresh"
+                        aria-hidden="true"></i></button>
+                <button class="btn btn-success" id="crop"><i class="fa fa-check" aria-hidden="true"></i></button>
+                <a style="display: none" href="" id="download" download="shanling.png"></a>
+            </div>
         </div>
     </div>
-
+    <div class="modal fade docs-cropped" id="getCroppedCanvasModal" aria-hidden="true"
+        aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="getCroppedCanvasTitle">请长按保存图片</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align:center"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
