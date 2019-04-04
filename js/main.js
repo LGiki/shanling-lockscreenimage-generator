@@ -56,15 +56,8 @@ $(function () {
             imageSmoothingQuality: 'high',
         });
 
-        if (device.mobile()) {
-            $('#getCroppedCanvasModal').modal().find('.modal-body').html(convertCanvasToImage(resultCanvas));
-        }else{
-            resultCanvas.toBlob((blob) => {
-                var url = URL.createObjectURL(blob);
-                $('#download').attr('href', url);
-                document.getElementById("download").click();
-            });
-        }
+        $('#getCroppedCanvasModal').modal().find('.cropped-image').html(convertCanvasToImage(resultCanvas));
+
     });
 });
 

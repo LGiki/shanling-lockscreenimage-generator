@@ -5,11 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Shanling Lock Screen Image Generator</title>
+    <title>山灵锁屏图片在线裁剪工具</title>
     <script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://lib.baomitu.com/cropper/3.1.6/cropper.js"></script>
     <script src="https://lib.baomitu.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://lib.baomitu.com/device.js/0.2.7/device.min.js"></script>
     <script src="js/main.js"></script>
     <link href="https://lib.baomitu.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://lib.baomitu.com/cropper/3.1.6/cropper.min.css" rel="stylesheet">
@@ -21,14 +20,14 @@
 <body>
     <div class="main">
         <div class="header">
-            <h2>Shanling Lock Screen Image Generator</h2>
+            <h2>山灵锁屏图片在线裁剪工具</h2>
         </div>
         <hr>
         <div class="main_crop">
             <img id="image" src="images/default.jpg">
         </div>
         <div class="sidebar">
-            <p>Preview:</p>
+            <p>实时预览:</p>
             <div class="preview">
                 <div class="shadow_layer">
                     <img src="images/shadow.png">
@@ -60,12 +59,14 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="getCroppedCanvasTitle">请长按保存图片</h5>
+                    <h5 class="modal-title" id="getCroppedCanvasTitle">裁剪完成</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body" style="text-align:center"></div>
+                <div class="modal-body" style="text-align:center">
+                    <div class="cropped-image"></div>请保存以上图片，并将其放于播放器内存卡根目录的&nbsp;<b>lockscreenimage</b>&nbsp;文件夹下
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
                     <p></p>
