@@ -18,6 +18,10 @@ hr {
     background-image: repeating-linear-gradient(-45deg, #fff, #fff 4px, transparent 4px, transparent 8px);
 }
 
+#crop_type {
+    margin-bottom: 5px;
+}
+
 .main {
     text-align: center;
     font: 16px/1.8 "Microsoft YaHei", "Noto Sans", "Noto Sans CJK", "Lato", "Microsoft Jhenghei", "Hiragino Sans GB", arial, sans-serif;
@@ -25,20 +29,20 @@ hr {
     text-shadow: 4px 4px 4px #aaa;
 }
 
-.preview {
+.preview_m2x {
     height: 480px;
     width: 320px;
     margin: 5px auto 5px auto;
 }
 
-.shadow_layer {
+.shadow_layer_m2x {
     position: absolute;
     z-index: 1;
     height: 480px;
     width: 320px;
 }
 
-.image_preview {
+.image_preview_m2x {
     position: absolute;
     z-index: -1;
     overflow: hidden;
@@ -46,7 +50,32 @@ hr {
     width: 320px;
 }
 
-.image-preview img {
+.image_preview_m2x>img {
+    max-width: 100%;
+}
+
+.preview_m0 {
+    height: 240px;
+    width: 240px;
+    margin: 5px auto 5px auto;
+}
+
+.shadow_layer_m0 {
+    position: absolute;
+    z-index: 1;
+    height: 240px;
+    width: 240px;
+}
+
+.image_preview_m0 {
+    position: absolute;
+    z-index: -1;
+    overflow: hidden;
+    height: 240px;
+    width: 240px;
+}
+
+.image_preview_m0>img {
     max-width: 100%;
 }
 

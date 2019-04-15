@@ -20,34 +20,44 @@
 <body>
     <div class="main">
         <div class="header">
-            <h2>山灵锁屏图片在线裁剪工具</h2>
+            <h3>山灵锁屏图片在线裁剪工具</h3>
         </div>
         <hr>
         <div class="main_crop">
             <img id="image" src="images/default.jpg">
         </div>
         <div class="sidebar">
-            <p>实时预览:</p>
-            <div class="preview">
-                <div class="shadow_layer">
-                    <img src="images/shadow.png">
+            <p style="margin:0 auto">实时预览:</p>
+            <div class="preview_m2x">
+                <div class="shadow_layer_m2x">
+                    <img id="shadow_img_m2x" src="images/shadow_m2x.png">
                 </div>
-                <div class="image_preview"></div>
+                <div class="image_preview_m2x"></div>
+            </div>
+            <div class="preview_m0" style="display: none">
+                <div class="shadow_layer_m0">
+                    <img id="shadow_img_m0" src="images/shadow_m0.png">
+                </div>
+                <div class="image_preview_m0"></div>
             </div>
             <hr>
             <div class="control_panel">
                 <input type="file" id="input_image" name="file" accept="image/*" style="display: none">
-                <button class="btn btn-primary" onclick="openFileSelector()"><i class="fa fa-upload"
+                <select id="crop_type" class="custom-select custom-select-sm">
+                    <option value="m2x" selected>M2X / M5S</option>
+                    <option value="m0">M0</option>
+                </select>
+                <button class="btn btn-primary" onclick="openFileSelector()" title="上传本地图片"><i class="fa fa-upload"
                         aria-hidden="true"></i></button>
-                <button class="btn btn-info" onclick="cropper.zoom(0.1)" title="Zoom Out"><i class="fa fa-search-plus"
+                <button class="btn btn-info" onclick="cropper.zoom(0.1)" title="放大"><i class="fa fa-search-plus"
                         aria-hidden="true"></i></button>
-                <button class="btn btn-info" onclick="cropper.zoom(-0.1)"><i class="fa fa-search-minus"
+                <button class="btn btn-info" onclick="cropper.zoom(-0.1)" title="缩小"><i class="fa fa-search-minus"
                         aria-hidden="true"></i></button>
-                <button class="btn btn-warning" onclick="cropper.rotate(45)"><i class="fa fa-repeat"
+                <button class="btn btn-warning" onclick="cropper.rotate(45)" title="顺逆时针旋转45°"><i class="fa fa-repeat"
                         aria-hidden="true"></i></button>
-                <button class="btn btn-warning" onclick="cropper.rotate(-45)"><i class="fa fa-undo"
+                <button class="btn btn-warning" onclick="cropper.rotate(-45)" title="逆时针旋转45°"><i class="fa fa-undo"
                         aria-hidden="true"></i></button>
-                <button class="btn btn-danger" onclick="resetCopper()"><i class="fa fa-refresh"
+                <button class="btn btn-danger" onclick="resetCopper()" title="重置裁剪框"><i class="fa fa-refresh"
                         aria-hidden="true"></i></button>
                 <button class="btn btn-success" id="crop"><i class="fa fa-check" aria-hidden="true"></i></button>
                 <a style="display: none" href="" id="download" download="shanling.png"></a>
